@@ -73,12 +73,12 @@ public class Frame implements ScoreHolder {
   }
 
   private Integer sumRollsScore(Stream<Roll> rolls) {
-    return rolls.reduce(0, (sum, roll) -> sum + roll.getScore(), (a, b) -> a + b);
+    return ScoreHolder.sum(this.rolls);
   }
 
   @Override
   public int getScore() {
-    return sumRollsScore(Stream.concat(this.rolls.stream(), this.bonuses.stream()));
+    return ScoreHolder.sum(this.rolls) + ScoreHolder.sum(this.bonuses);
   }
 
   public boolean acceptBonus() {
