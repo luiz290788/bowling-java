@@ -11,7 +11,8 @@
   <name>Bowling</name>
 
   <modules>
-    <module>bowling-core</module>
     <module>bowling-bom</module>
+    <module>bowling-cli</module>
+    <module>bowling-core</module>
   </modules>
 </project>

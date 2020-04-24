@@ -81,6 +81,14 @@ public class Frame implements ScoreHolder {
     return ScoreHolder.sum(this.rolls) + ScoreHolder.sum(this.bonuses);
   }
 
+  public List<Roll> getRolls() {
+    return rolls;
+  }
+
+  public List<Roll> getBonuses() {
+    return bonuses;
+  }
+
   public boolean acceptBonus() {
     return this.state.getBonusCount() - this.bonuses.size() > 0;
   }

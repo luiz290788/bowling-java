@@ -83,6 +83,10 @@ public class Score {
     return this.frames.stream().map(ScoreHolder::getScore).map(score::addAndGet);
   }
 
+  public List<Frame> getFrames() {
+    return frames;
+  }
+
   public static final class IllegalFrameCount extends IllegalArgumentException {
     private static final long serialVersionUID = 2031162654812422052L;
 
