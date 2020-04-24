@@ -6,67 +6,24 @@
   <groupId>com.luiz-guilherme</groupId>
   <artifactId>bowling-core</artifactId>
   <version>1.0-SNAPSHOT</version>
-
   <name>Bowling Core</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-  </properties>
+  <parent>
+    <groupId>com.luiz-guilherme</groupId>
+    <artifactId>bowling-bom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../bowling-bom</relativePath>
+  </parent>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.jacoco</groupId>
-          <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.5</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.2.0</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <mainClass>com.luizguilherme.bowling.App</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>3.1.1</version>
-          <configuration>
-            <configLocation>google_checks.xml</configLocation>
-            <failsOnError>true</failsOnError>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
@@ -86,6 +43,7 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <executions>
