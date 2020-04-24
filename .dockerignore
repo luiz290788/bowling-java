@@ -1,0 +1,9 @@
+Dockerfile
+.settings
+.vscode
+.dockerignore
+.gitignore
+.project
+target
+.classpath
+*.sh
