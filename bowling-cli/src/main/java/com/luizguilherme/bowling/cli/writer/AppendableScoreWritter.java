@@ -10,6 +10,9 @@ import com.luizguilherme.bowling.score.Frame;
 import com.luizguilherme.bowling.score.Roll;
 import com.luizguilherme.bowling.score.Score;
 
+/**
+ * Writes the score into an {@link Appendable}
+ */
 public class AppendableScoreWritter implements ScoreWriter {
 
   private final Appendable appendable;
@@ -104,6 +107,9 @@ public class AppendableScoreWritter implements ScoreWriter {
     appendLine(scoreLine(score));
   }
 
+  /**
+   * Writes the score into the {@link Appendable} provided in the constructor.
+   */
   @Override
   public void write(Game game) {
     appendLine(writeHeader(10));

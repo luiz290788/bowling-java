@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 
 import com.luizguilherme.bowling.game.Play;
 
+/**
+ * Reads plays from a file.
+ */
 public class FilePlaysReader implements PlaysReader {
 
   private InputStreamPlaysReader inputStreamPlaysReader;
