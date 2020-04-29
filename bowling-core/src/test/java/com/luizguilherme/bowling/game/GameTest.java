@@ -2,6 +2,8 @@ package com.luizguilherme.bowling.game;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import com.luizguilherme.bowling.score.Roll;
 
 import org.junit.Test;
@@ -31,5 +33,18 @@ public class GameTest {
     assertEquals(jeffName, jeff.getName());
     assertEquals(7, jeff.getScore().getScore());
     assertEquals(2, game.getPlayers().size());
+  }
+
+  @Test
+  public void shouldReturnPlayersRespectingInsertOrder() {
+    Game game = new Game();
+    String johnName = "John";
+    game.addPlay(new Play(johnName, new Roll(5)));
+    String jeffName = "Jeff";
+    game.addPlay(new Play(jeffName, new Roll(7)));
+
+    List<Player> players = game.getPlayers();
+    assertEquals(johnName, players.get(0).getName());
+    assertEquals(jeffName, players.get(1).getName());
   }
 }
