@@ -1,5 +1,8 @@
 package com.luizguilherme.bowling.score;
 
+/**
+ * Represents a roll made by a player.
+ */
 public class Roll implements ScoreHolder {
 
   private final int score;
@@ -12,6 +15,12 @@ public class Roll implements ScoreHolder {
     this(score, RollState.PLAYED);
   }
 
+  /**
+   * Creates a new roll, checking if the score respects the boundaries.
+   * 
+   * @param score must be greater or equal to 0 and lesser or equal to 10
+   * @param state of the frame {@link RollState}
+   */
   public Roll(final int score, final RollState state) {
     checkScore(score);
     if (state == RollState.FAILED) {

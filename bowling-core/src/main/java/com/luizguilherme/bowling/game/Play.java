@@ -2,6 +2,9 @@ package com.luizguilherme.bowling.game;
 
 import com.luizguilherme.bowling.score.Roll;
 
+/**
+ * This class represents a Play made by a player.
+ */
 public class Play {
 
   private String playerName;

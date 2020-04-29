@@ -2,6 +2,9 @@ package com.luizguilherme.bowling.game;
 
 import com.luizguilherme.bowling.score.Score;
 
+/**
+ * This class represents a player with their score.
+ */
 public class Player {
 
   private final String name;

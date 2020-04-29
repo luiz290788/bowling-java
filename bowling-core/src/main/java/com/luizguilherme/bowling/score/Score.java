@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
+/**
+ * A series of frames representing the score of a player in a bowling game.
+ */
 public class Score {
 
   private final int frameCount;
@@ -15,6 +18,11 @@ public class Score {
     this(10);
   }
 
+  /**
+   * Creates a score.
+   * 
+   * @param frameCount the number of frames allowed in this game.
+   */
   public Score(int frameCount) {
     if (frameCount <= 0) {
       throw new IllegalFrameCount(frameCount);
@@ -41,6 +49,10 @@ public class Score {
     return bonusAdded;
   }
 
+  /**
+   * Adds a roll to the score. Either adding to the current frame or creating a
+   * new one.
+   */
   public Score addRoll(Roll roll) {
     if (!this.currentFrame.acceptRoll()) {
       if (this.frames.size() == this.frameCount) {
@@ -58,6 +70,9 @@ public class Score {
     return this;
   }
 
+  /**
+   * Calculates the total score of the player.
+   */
   public int getScore() {
     return ScoreHolder.sum(this.frames);
   }
@@ -74,19 +89,39 @@ public class Score {
     return false;
   }
 
+  /**
+   * Checks if the game has finished according to the number of frames.
+   * 
+   * @return true if the player has performed all the plays, false otherwise.
+   */
   public boolean hasFinished() {
     return this.frames.size() == this.frameCount && !this.currentFrame.acceptRoll() && !this.acceptBonus();
   }
 
+  /**
+   * Gets the scores of the player after each frame.
+   * 
+   * @return a stream of integers representing the total score after each frame.
+   */
   public Stream<Integer> getScoresByFrames() {
     AtomicInteger score = new AtomicInteger(0);
     return this.frames.stream().map(ScoreHolder::getScore).map(score::addAndGet);
   }
 
+  /**
+   * Gets the played frames.
+   * 
+   * @return a list of frames in order they were played.
+   */
   public List<Frame> getFrames() {
     return frames;
   }
 
+  /**
+   * Thrown to indicate that frame count provided is illegal.
+   * 
+   * Frame count needs to be greater than 0.
+   */
   public static final class IllegalFrameCount extends IllegalArgumentException {
     private static final long serialVersionUID = 2031162654812422052L;
 
@@ -95,6 +130,10 @@ public class Score {
     }
   }
 
+  /**
+   * Thrown to indicate that a new roll is not allowed in the score. A new roll
+   * won't be allowed when the game has already finished.
+   */
   static public final class RollNotAllowedInScore extends IllegalStateException {
     private static final long serialVersionUID = 8415564367333013683L;
 
