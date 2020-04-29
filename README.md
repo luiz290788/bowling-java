@@ -2,9 +2,9 @@
 
 ## How to run
 
-### Docker (Recomended)
+### Docker (Recommended)
 
-Build the image using the follwing command
+Build the image using the following command
 
 ```sh
 docker build -t bowling-java:latest .
