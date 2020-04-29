@@ -31,11 +31,16 @@ public class App {
   }
 
   public static void main(String[] args) throws IOException {
-    PlaysReader playsReader = getReader(args);
-    ScoreWriter scoreWriter = getWriter(args);
+    try {
+      PlaysReader playsReader = getReader(args);
+      ScoreWriter scoreWriter = getWriter(args);
 
-    Game game = new Game();
-    playsReader.read().forEach(game::addPlay);
-    scoreWriter.write(game);
+      Game game = new Game();
+      playsReader.read().forEach(game::addPlay);
+      scoreWriter.write(game);
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+      System.exit(1);
+    }
   }
 }

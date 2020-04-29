@@ -14,6 +14,10 @@ public interface PlaysReader {
   default Play parseLine(String line) {
     String[] parts = line.split("\t");
 
+    if (parts.length != 2) {
+      throw new InvalidInputException(String.format("Line \"%s\" has more parts than expected", line));
+    }
+
     Roll roll;
 
     if (FAIL_STRING.equals(parts[1])) {
@@ -23,6 +27,12 @@ public interface PlaysReader {
     }
 
     return new Play(parts[0], roll);
+  }
+
+  static final class InvalidInputException extends RuntimeException {
+    public InvalidInputException(String message) {
+      super(message);
+    }
   }
 
 }
