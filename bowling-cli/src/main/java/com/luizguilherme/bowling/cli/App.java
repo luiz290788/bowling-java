@@ -8,7 +8,7 @@ import java.io.PrintStream;
 import com.luizguilherme.bowling.cli.input.FilePlaysReader;
 import com.luizguilherme.bowling.cli.input.InputStreamPlaysReader;
 import com.luizguilherme.bowling.cli.input.PlaysReader;
-import com.luizguilherme.bowling.cli.writer.PrintStreamScoreWriter;
+import com.luizguilherme.bowling.cli.writer.AppendableScoreWritter;
 import com.luizguilherme.bowling.cli.writer.ScoreWriter;
 import com.luizguilherme.bowling.game.Game;
 
@@ -23,11 +23,11 @@ public class App {
 
   public static ScoreWriter getWriter(String[] args) throws IOException {
     if (args.length < 2) {
-      return new PrintStreamScoreWriter(System.out);
+      return new AppendableScoreWritter(System.out);
     }
     File file = new File(args[1]);
     file.createNewFile();
-    return new PrintStreamScoreWriter(new PrintStream(file));
+    return new AppendableScoreWritter(new PrintStream(file));
   }
 
   public static void main(String[] args) throws IOException {
